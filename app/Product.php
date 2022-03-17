@@ -4,7 +4,13 @@ class Product
 {
     private $id, $name, $description, $price, $image;
 
-    public function __construct($id, $name, $description, $price, $image)
+    public function __construct(
+        $id,
+        $name,
+        $description = null,
+        $price = null,
+        $image = null
+    )
     {
         $this->id = $id;
         $this->name = $name;

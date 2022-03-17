@@ -1,7 +1,6 @@
 <?php
 require('app/Customer.php');
 require('app/Product.php');
-require('app/ShoppingCart.php');
 require('app/FileUtility.php');
 
 $products_data = FileUtility::openCSV('products.csv');
@@ -9,9 +8,6 @@ $products_data = FileUtility::openCSV('products.csv');
 $products = Product::convertArrayToProducts($products_data);
 
 $customer = new Customer('John Doe', 'john@mail.com');
-
-$shoppingCart = new ShoppingCart($customer);
-$shoppingCartItems = $shoppingCart->getAllItems();
 ?>
 <html>
 <head>
