@@ -28,8 +28,11 @@ class Product
         return $this->description;
     }
 
-    public function getPrice()
+    public function getPrice($decimal = 2)
     {
+        if ($decimal > 0) {
+            return number_format($this->price, $decimal);
+        }
         return $this->price;
     }
 
@@ -45,6 +48,7 @@ class Product
 
     public static function convertArrayToProducts($products_data)
     {
+        $products = [];
         foreach ($products_data as $record) {
             array_push($products,
                 new Product(

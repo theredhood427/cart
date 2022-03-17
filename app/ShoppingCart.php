@@ -50,6 +50,7 @@ class ShoppingCart implements CartInterface
     {
         // Save order to file
         $data = "";
+        $number = 0;
         FileUtility::writeToFile('ORDER-' . $number, $data);
         // Clear the cart
         $this->clear();
