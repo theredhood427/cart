@@ -55,16 +55,23 @@ class Product
     public static function convertArrayToProducts($products_data)
     {
         $products = [];
-        foreach ($products_data as $record) {
-            array_push($products,
-                new Product(
-                    $record['id'],
-                    $record['name'],
-                    $record['description'],
-                    $record['price'],
-                    $record['image']
-                )
-            );
+        try {
+            if (!is_array($products_data)) {
+                return $products;
+            }
+            foreach ($products_data as $record) {
+                array_push($products,
+                    new Product(
+                        $record['id'],
+                        $record['name'],
+                        $record['description'],
+                        $record['price'],
+                        $record['image']
+                    )
+                );
+            }
+        } catch (Exception $e) {
+            error_log($e->getMessage());
         }
 
         return $products;
